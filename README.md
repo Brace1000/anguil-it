@@ -1,59 +1,112 @@
-# AnguilIt
+## Angul-It: Multi-Stage Captcha Application
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.2.
+Angul-It is a robust, multiple-stage captcha web application built using the latest version of Angular. It is designed to challenge users with varied tasks—including image identification, mathematical problem solving, and text input—to verify they are human.
 
-## Development server
+## 🚀 Features
 
-To start a local development server, run:
+    Multi-Stage Challenges: A linear progression through diverse captcha types.
 
-```bash
-ng serve
-```
+    State Management & Persistence: Powered by Angular Signals and localStorage. Progress remains intact even after a page refresh.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+    Randomized Challenge Sets: Challenges are randomly selected and shuffled from a master pool for every session.
 
-## Code scaffolding
+    ## Navigation Integrity:
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+        Users can revisit previous stages using a "Back" button.
 
-```bash
-ng generate component component-name
-```
+        A Result Guard prevents direct access to the success page unless all challenges are completed.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+    Responsive Design: Optimized for seamless use on desktop, tablet, and mobile devices.
 
-```bash
-ng generate --help
-```
+    Form Validation: Robust validation ensures users cannot proceed without providing the correct answer.
 
-## Building
+   ## 🛠️ Installation & Setup
+Prerequisites
 
-To build the project run:
+    - Node.js (Latest LTS version recommended)
 
-```bash
-ng build
-```
+    - Angular CLI installed globally (npm install -g @angular/cli)
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+Steps to Run
 
-## Running unit tests
+    Clone the repository:
+    code Bash
 
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+    git clone https://github.com/Brace1000/anguil-it.git
 
-```bash
-ng test
-```
+    Navigate into the project directory:
+    code Bash
 
-## Running end-to-end tests
+    cd anguil-it
 
-For end-to-end (e2e) testing, run:
+    Install dependencies:
+    code Bash
 
-```bash
-ng e2e
-```
+    npm install
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+    Start the development server:
+    code Bash
 
-## Additional Resources
+    ng serve
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+    Open the app:
+    Navigate to http://localhost:4200/ in your browser.
+
+## 📁 Project Structure
+
+    src/app/services/captcha.service.ts: The core "brain" of the app. Manages state, handles randomization, and syncs data with localStorage.
+
+    src/app/guards/result.guard.ts: Ensures the security of the results page.
+
+    src/app/components/:
+
+        HomeComponent: Entry point for the user.
+
+        CaptchaComponent: Handles the logic for image grids, math, and text challenges.
+
+        ResultComponent: Final destination proving the user is not a bot.
+
+## ✅ Audit Checklist Verification
+
+This project has been built to satisfy the following requirements:
+Functional Requirements
+
+    Component Creation: Separate components for Home, Captcha, and Result.
+
+    Captcha Challenges: Implements image selection, math problems, and text input.
+
+    Form Validation: "Next" button is disabled until valid input is detected; incorrect answers trigger alerts.
+
+    State Management: Uses Angular Signals and localStorage to survive page refreshes.
+
+    Results Page: Accessible only after completing all stages; provides "Not a bot" feedback.
+
+## Bonus Requirements
+
+    Multiple Challenge Sets: Challenges are randomly assigned and shuffled using a master pool logic.
+
+    Responsiveness: CSS Grid and Flexbox ensure the application works on all screen sizes.
+
+    Navigation: Includes a "Back" button to revisit previous challenges without losing progress.
+
+## 🧪 Testing the Application
+
+    Start a Session: Click "Start Verification" on the Home page.
+
+    Verify Persistence: Complete Stage 1, then Refresh the browser. You should remain on Stage 2.
+
+    Verify Security: Try to manually navigate to /result via the address bar. You should be redirected back to the captcha.
+
+    Verify Randomization: Finish the captcha, reach the result page, and click "Try New Challenge." You will receive a different set/order of challenges.
+
+## 🛠️ Technologies Used
+
+    - Angular (Latest Version)
+
+    - Angular Signals (State Management)
+
+    - TypeScript
+
+    - SCSS (Responsive Styling)
+
+    - LocalStorage API
